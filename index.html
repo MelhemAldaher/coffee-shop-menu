@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قهوة السعادة - القائمة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: #f5e6d3;
+            color: #3a2f28;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #6b4f3c;
+            margin-bottom: 15px;
+        }
+
+        .menu-section {
+            margin-bottom: 50px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .hot-drinks .section-title { background: #c44536; }
+        .cold-drinks .section-title { background: #3d5a80; }
+        .desserts .section-title { background: #e6af2e; }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 10px 10px 0 0;
+            transition: all 0.3s ease;
+            cursor: zoom-in;
+            padding: 10px;
+        }
+
+        .item-details {
+            padding: 20px;
+        }
+
+        .item-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #6b4f3c;
+        }
+
+        .item-description {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: #c44536;
+            font-size: 1.1rem;
+        }
+
+        /* نافذة التكبير */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .item-image {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .item-image {
+                height: 150px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>قهوة السعادة ☕</h1>
+            <p>استمتع بأشهى المشروبات والحلويات المميزة</p>
+        </header>
+
+        <!-- المشروبات الساخنة -->
+        <section class="menu-section hot-drinks">
+            <h2 class="section-title">☕ المشروبات الساخنة</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="C:\Users\melhe\Desktop\409353-Doc-P.jpg"
+                         alt="اسبريسو" 
+                         class="item-image"
+                         onclick="openModal(this.src)">
+                    <div class="item-details">
+                        <h3 class="item-name">اسبريسو إيطالي</h3>
+                        <p class="item-description">قهوة مركزة مع رغوة ناعمة من الحليب الطازج</p>
+                        <p class="item-price">12 ر.س</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- المشروبات الباردة -->
+        <section class="menu-section cold-drinks">
+            <h2 class="section-title">🧊 المشروبات الباردة</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="C:\Users\melhe\Desktop\OIP (1).jpg"
+                         alt="فرابتشينو" 
+                         class="item-image"
+                         onclick="openModal(this.src)">
+                    <div class="item-details">
+                        <h3 class="item-name">فرابتشينو كراميل</h3>
+                        <p class="item-description">مزيج من القهوة المثلجة مع صوص الكراميل والكريمة المخفوقة</p>
+                        <p class="item-price">18 ر.س</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الحلويات -->
+        <section class="menu-section desserts">
+            <h2 class="section-title">🍰 الحلويات</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="C:\Users\melhe\Desktop\1768078.jpg" 
+                         alt="تشيز كيك" 
+                         class="item-image"
+                         onclick="openModal(this.src)">
+                    <div class="item-details">
+                        <h3 class="item-name">تشيز كيك التوت</h3>
+                        <p class="item-description">طبقة كريمة الجبن مع صلصة التوت الطازج</p>
+                        <p class="item-price">22 ر.س</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- نافذة التكبير -->
+        <div class="image-modal" id="imageModal" onclick="closeModal()">
+            <img class="modal-content" id="modalImage" alt="صورة مكبرة">
+        </div>
+    </div>
+
+    <script>
+        // دالة فتح الصورة المكبرة
+        function openModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // دالة إغلاق الصورة المكبرة
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // إغلاق النافذة عند الضغط على زر ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
